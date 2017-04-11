@@ -9,7 +9,7 @@ function ball (x, y, vector) {
       param = {
         x: x,
         y: y,
-        deleted: false,
+        removed: false,
         move: () => {
           vector.vecY += gravity;
           gravity += 0.1;
@@ -29,11 +29,28 @@ function ball (x, y, vector) {
   return param;
 };
 
-function changeCannonVect () {
-  
+function cannon (x, y) {
+  let mouseX = 0,
+      mouseY = 0,
+      cannonVect = 0,
+      param = {
+        x: x,
+        y: y,
+        vect: 0,
+        removed: false,
+        move: () => {
+          vect: = Math.atan2(mouseY - param.y, mouseX - param.x);
+        },
+      }
 };
 
-function shot () {
-  
+function changeCannonVect (event) {
+  let vect = vector2d(mouseX - param.x, mouseY - param.y);
 };
 
+function shot (event) {
+  changeCannonVect(event);
+  vect.normalize();
+  vect.scale(25);
+  elements.push(ball(param.x, param.y, vect));
+};
